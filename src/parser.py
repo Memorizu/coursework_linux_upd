@@ -11,11 +11,9 @@ class Parser:
         read data from json file
         :return: list of operations
         """
-        try:
-            with open(data) as file:
-                list_of_operations = json.load(file)
-        except JSONDecodeError:
-            return []
+        with open(data) as file:
+            list_of_operations = json.load(file)
+
         return list_of_operations
 
     @staticmethod
@@ -51,6 +49,3 @@ class Parser:
 
     def __convert_card_digits(self, number: str) -> str:
         return f'{number[:4]} {number[4:6]}** **** {number[-4:len(number)]}'
-
-parser = Parser()
-print(parser.convert_date('sdfsdf'))

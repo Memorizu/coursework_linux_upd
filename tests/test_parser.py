@@ -13,6 +13,11 @@ class TestParser:
         ('2019-04-04T23:20:05.206878', '04.04.2019')
     ]
 
+    card_num = [
+        ("Счет 75106830613657916952", "Счет 7510 68** **** 6952"),
+        ("Счет 44812258784861134719", "Счет 4481 22** **** 4719")
+    ]
+
     @pytest.mark.parametrize("date, correct_date", dates)
     def test_convert_date(self, date, correct_date):
         parser = Parser()
@@ -30,3 +35,8 @@ class TestParser:
         result = parser.read_file(data_file.name)
         assert result == operations
         os.unlink(data_file.name)
+
+    @pytest.mark.parametrize("card_number, correct_card_number", card_num)
+    def test_convert_card_number(self, card_number, correct_card_number):
+        parser = Parser()
+        assert parser.convert_card_number(card_number, card_number=True) == correct_card_number
