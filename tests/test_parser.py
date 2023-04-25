@@ -1,5 +1,7 @@
+import json
+import tempfile
 import pytest
-
+import os
 from src.parser import Parser
 
 
@@ -20,3 +22,11 @@ class TestParser:
         parser = Parser()
         with pytest.raises(TypeError):
             parser.convert_date(12345)
+
+    def test_read_file(self, operations):
+        parser = Parser()
+        with tempfile.NamedTemporaryFile(mode='w', delete=False) as data_file:
+            json.dump(operations, data_file)
+        result = parser.read_file(data_file.name)
+        assert result == operations
+        os.unlink(data_file.name)
