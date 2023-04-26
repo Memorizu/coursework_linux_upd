@@ -1,7 +1,5 @@
 import json
-from json import JSONDecodeError
 from typing import Union
-from datetime import datetime
 
 
 class Parser:
@@ -11,10 +9,13 @@ class Parser:
         read data from json file
         :return: list of operations
         """
-        with open(data) as file:
-            list_of_operations = json.load(file)
-
-        return list_of_operations
+        if isinstance(data, str):
+            with open(data) as file:
+                return json.load(file)
+        elif isinstance(data, list):
+            return data
+        else:
+            raise TypeError('Unsupported data type')
 
     @staticmethod
     def convert_date(date: str) -> str:

@@ -18,6 +18,11 @@ class TestParser:
         ("Счет 44812258784861134719", "Счет 4481 22** **** 4719")
     ]
 
+    check_num = [
+        ("Счет 75651667383060284188", "Счет **4188"),
+        ("Счет 74489636417521191160", "Счет **1160")
+    ]
+
     @pytest.mark.parametrize("date, correct_date", dates)
     def test_convert_date(self, date, correct_date):
         parser = Parser()
@@ -40,3 +45,8 @@ class TestParser:
     def test_convert_card_number(self, card_number, correct_card_number):
         parser = Parser()
         assert parser.convert_card_number(card_number, card_number=True) == correct_card_number
+
+    @pytest.mark.parametrize("check_number, correct_check_number", check_num)
+    def test_convert_check_number(self, check_number, correct_check_number):
+        parser = Parser()
+        assert parser.convert_card_number(check_number, check=True) == correct_check_number
