@@ -1,4 +1,3 @@
-import json
 
 import pytest
 
@@ -7,8 +6,8 @@ import pytest
 def operations():
     return [
         {
-            "id": 441945886,
-            "state": "EXECUTED",
+            "id": 1,
+            "state": "CANCELED",
             "date": "2019-08-26T10:50:58.294041",
             "operationAmount": {
                 "amount": "31957.58",
@@ -22,7 +21,7 @@ def operations():
             "to": "Счет 64686473678894779589"
         },
         {
-            "id": 41428829,
+            "id": 3,
             "state": "EXECUTED",
             "date": "2019-07-03T18:35:29.512364",
             "operationAmount": {
@@ -37,7 +36,7 @@ def operations():
             "to": "Счет 35383033474447895560"
         },
         {
-            "id": 939719570,
+            "id": 2,
             "state": "EXECUTED",
             "date": "2018-06-30T02:08:58.425572",
             "operationAmount": {

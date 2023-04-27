@@ -41,6 +41,11 @@ class TestParser:
         assert result == operations
         os.unlink(data_file.name)
 
+    def test_read_file_negative(self):
+        parser = Parser()
+        with pytest.raises(TypeError):
+            parser.read_file(132)
+
     @pytest.mark.parametrize("card_number, correct_card_number", card_num)
     def test_convert_card_number(self, card_number, correct_card_number):
         parser = Parser()

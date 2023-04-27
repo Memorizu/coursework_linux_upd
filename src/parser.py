@@ -4,16 +4,16 @@ from typing import Union
 
 class Parser:
 
-    def read_file(self, data) -> Union[list, dict]:
+    def read_file(self, file_path: str) -> Union[list, dict]:
         """
         read data from json file
         :return: list of operations
         """
-        if isinstance(data, str):
-            with open(data) as file:
+        if isinstance(file_path, str):
+            with open(file_path) as file:
                 return json.load(file)
-        elif isinstance(data, list):
-            return data
+        elif isinstance(file_path, list):
+            return file_path
         else:
             raise TypeError('Unsupported data type')
 

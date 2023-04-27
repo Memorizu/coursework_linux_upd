@@ -1,5 +1,5 @@
 from src.parser import Parser
-from utils import sort_by_date, final_sort
+from src.utils import sort_by_date, final_sort
 from config import Config
 
 
